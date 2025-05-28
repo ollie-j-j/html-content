@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8">
-  <title>Prompt with Section Labels in Margin</title>
+  <title>Prompt with Inline Tags and Section Labels</title>
   <style>
     body {
       font-family: system-ui, sans-serif;
@@ -20,23 +20,24 @@
       margin: 0 auto;
     }
 
-    .legend {
+    .tags {
       display: flex;
+      flex-wrap: wrap;
       gap: 0.75rem;
-      margin-bottom: 1rem;
+      margin-bottom: 1.5rem;
       font-size: 0.9rem;
     }
 
     .tag {
-      border-radius: 6px;
-      padding: 0.25rem 0.5rem;
       font-weight: 600;
+      padding: 0.25rem 0.5rem;
+      border-radius: 6px;
     }
 
-    .persona { background-color: #e3ecfb; color: #1c2e4a; }
-    .task    { background-color: #fde7e7; color: #5c1a1a; }
-    .context { background-color: #fff7d6; color: #5a4e00; }
-    .format  { background-color: #e6f4ea; color: #184d33; }
+    .persona { color: #1c2e4a; background-color: transparent; }
+    .task    { color: #5c1a1a; background-color: transparent; }
+    .context { color: #5a4e00; background-color: transparent; }
+    .format  { color: #184d33; background-color: transparent; }
 
     .prompt-section {
       display: flex;
@@ -46,13 +47,10 @@
     }
 
     .section-label {
-      min-width: 160px;
-      font-size: 0.85rem;
-      background-color: #f0f0f0;
-      padding: 0.3rem 0.6rem;
-      border-radius: 6px;
+      min-width: 180px;
+      font-size: 0.9rem;
       font-weight: 600;
-      color: #444;
+      color: #333;
       text-align: right;
     }
 
@@ -76,7 +74,7 @@
 <body>
 
   <div class="card">
-    <div class="legend">
+    <div class="tags">
       <span class="tag persona">Persona</span>
       <span class="tag task">Task</span>
       <span class="tag context">Context</span>
@@ -84,7 +82,7 @@
     </div>
 
     <div class="prompt-section">
-      <div class="section-label">[1] Context & Reference</div>
+      <div class="section-label">Context & Reference</div>
       <div class="section-content">
         I am an Account Executive at Revolut, a financial technology company. I am conducting prospecting research to identify potential new business clients.
 
@@ -93,7 +91,7 @@
     </div>
 
     <div class="prompt-section">
-      <div class="section-label">[2] Intent & Criteria</div>
+      <div class="section-label">Intent & Criteria</div>
       <div class="section-content">
         My goal is to generate a list of companies that meet the following criteria:
 
@@ -105,7 +103,7 @@
     </div>
 
     <div class="prompt-section">
-      <div class="section-label">[3] Refining Search</div>
+      <div class="section-label">Refining Search</div>
       <div class="section-content">
         Required Information: For each company identified, please provide:
         <ul>
@@ -119,7 +117,7 @@
     </div>
 
     <div class="prompt-section">
-      <div class="section-label">[4] Defining Deliverables</div>
+      <div class="section-label">Defining Deliverables</div>
       <div class="section-content">
         Please present this information in a table format with clear column headers:  
         'Company Name', 'Website Link', 'Companies House Link', 'Key Contact/Role', and 'Public Business Contact Info'.
@@ -127,7 +125,7 @@
     </div>
 
     <div class="prompt-section">
-      <div class="section-label">[5] Prompt Guardrails</div>
+      <div class="section-label">Prompt Guardrails</div>
       <div class="section-content">
         Exclude any companies that are already widely known multinational corporations or publicly listed companies, unless they have a distinct UK-based subsidiary that independently meets the criteria.
 
