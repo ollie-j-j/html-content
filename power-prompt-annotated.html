@@ -2,141 +2,226 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8">
-  <title>Prompt with Inline Tags and Section Labels</title>
+  <title>Structured Prompt with Aligned Legend & Toggle</title>
   <style>
     body {
       font-family: system-ui, sans-serif;
-      background-color: transparent;
+      background-color: #ffffff;
       margin: 0;
-      padding: 0;
+      padding: 2rem;
     }
 
     .card {
-      background: white;
-      border-radius: 16px;
-      box-shadow: 0 2px 10px rgba(0, 0, 0, 0.08);
-      padding: 1.5rem;
-      max-width: 900px;
+      max-width: 960px;
       margin: 0 auto;
     }
 
-    .tags {
+    /* Legend container aligned to section content */
+    .legend-block {
       display: flex;
-      flex-wrap: wrap;
+      align-items: center;
       gap: 0.75rem;
-      margin-bottom: 1.5rem;
+      margin-bottom: 1rem;
+      /* align tags with section-content: label width (180px) + section-block gap (1.5rem) */
+      padding-left: calc(180px + 1.5rem);
+    }
+
+    .legend {
+      display: flex;
+      gap: 0.75rem;
+      flex-wrap: wrap;
       font-size: 0.9rem;
+      font-weight: 600;
+      align-items: center;
     }
 
     .tag {
-      font-weight: 600;
-      padding: 0.25rem 0.5rem;
+      padding: 0.25rem 0.6rem;
       border-radius: 6px;
     }
 
-    .persona { color: #1c2e4a; background-color: transparent; }
-    .task    { color: #5c1a1a; background-color: transparent; }
-    .context { color: #5a4e00; background-color: transparent; }
-    .format  { color: #184d33; background-color: transparent; }
+    .persona  { background-color: #e3ecfb; color: #1c2e4a; }
+    .task     { background-color: #fde7e7; color: #5c1a1a; }
+    .context  { background-color: #fff7d6; color: #5a4e00; }
+    .format   { background-color: #e6f4ea; color: #184d33; }
 
-    .prompt-section {
+    /* Highlight classes */
+    .highlight-persona  { background-color: #e3ecfb; }
+    .highlight-task     { background-color: #fde7e7; }
+    .highlight-context  { background-color: #fff7d6; }
+    .highlight-format   { background-color: #e6f4ea; }
+
+    /* No-highlight override */
+    .no-highlight .highlight-persona,
+    .no-highlight .highlight-task,
+    .no-highlight .highlight-context,
+    .no-highlight .highlight-format {
+      background-color: transparent !important;
+      color: inherit !important;
+    }
+
+    .section-block {
       display: flex;
       align-items: flex-start;
-      gap: 1rem;
-      margin-bottom: 1.5rem;
+      gap: 1.5rem;
+      margin-bottom: 2rem;
     }
 
     .section-label {
       min-width: 180px;
-      font-size: 0.9rem;
+      font-size: 1rem;
       font-weight: 600;
       color: #333;
       text-align: right;
+      padding-top: 0.3rem;
     }
 
     .section-content {
       flex: 1;
-      background-color: #f8f9fa;
-      border: 1px solid #dfe1e5;
+      background-color: #f9f9f9;
+      border: 1px solid #dcdcdc;
       border-radius: 12px;
       padding: 1rem;
-      line-height: 1.6;
       font-size: 1rem;
+      line-height: 1.6;
     }
 
-    .bracket-highlight {
-      background-color: #d4d4d4;
-      padding: 0 0.25rem;
-      border-radius: 4px;
+    .section-content ul {
+      padding-left: 1.25rem;
+      margin-top: 0.5rem;
+    }
+
+    /* Toggle switch styling */
+    .switch {
+      position: relative;
+      display: inline-block;
+      width: 50px;
+      height: 24px;
+    }
+
+    .switch input {
+      opacity: 0;
+      width: 0;
+      height: 0;
+    }
+
+    .slider {
+      position: absolute;
+      cursor: pointer;
+      top: 0;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      background-color: #ccc;
+      transition: .4s;
+      border-radius: 24px;
+    }
+
+    .slider:before {
+      position: absolute;
+      content: "";
+      height: 18px;
+      width: 18px;
+      left: 3px;
+      bottom: 3px;
+      background-color: white;
+      transition: .4s;
+      border-radius: 50%;
+    }
+
+    input:checked + .slider {
+      background-color: #007bff;
+    }
+
+    input:checked + .slider:before {
+      transform: translateX(26px);
     }
   </style>
 </head>
-<body>
+<body class="no-highlight">
 
   <div class="card">
-    <div class="tags">
-      <span class="tag persona">Persona</span>
-      <span class="tag task">Task</span>
-      <span class="tag context">Context</span>
-      <span class="tag format">Format</span>
+
+    <div class="legend-block">
+      <div class="legend">
+        <span class="tag persona">Persona</span>
+        <span class="tag task">Task</span>
+        <span class="tag context">Context</span>
+        <span class="tag format">Format</span>
+        <!-- Toggle Switch -->
+        <label class="switch">
+          <input type="checkbox" id="toggleHighlightSwitch">
+          <span class="slider"></span>
+        </label>
+      </div>
     </div>
 
-    <div class="prompt-section">
+    <div class="section-block">
       <div class="section-label">Context & Reference</div>
       <div class="section-content">
-        I am an Account Executive at Revolut, a financial technology company. I am conducting prospecting research to identify potential new business clients.
-
-        I have had significant success with a company called <span class="bracket-highlight">[Insert Name of Your Successful Reference Company Here]</span> and I am looking for other companies that are similar to them.
+        <span class="highlight-persona">I am an Account Executive at Revolut, a financial technology company.</span>
+        <span class="highlight-task">I am conducting prospecting research to identify potential new business clients.</span><br><br>
+        <span class="highlight-context">I have had significant success with a company called [Insert Name of Your Successful Reference Company Here] and I am looking for other companies that are similar to them.</span>
       </div>
     </div>
 
-    <div class="prompt-section">
+    <div class="section-block">
       <div class="section-label">Intent & Criteria</div>
       <div class="section-content">
-        My goal is to generate a list of companies that meet the following criteria:
-
-        1. Similarity: Should be similar in business model, product/service offering, and target market to <span class="bracket-highlight">[Insert Name of Your Successful Reference Company Here Again, or describe its key characteristics if the AI might not know the company]</span>.
-        2. Location: Must be based in the United Kingdom (UK).
-        3. Industry: <span class="bracket-highlight">[While the reference company implies the industry, you can still specify or broaden it slightly if needed.]</span>
-        4. Company Size/Revenue: Should include businesses with an annual revenue up to £15 million. If possible, prioritize companies within the £1–£15 million range.
+        <span class="highlight-task">My goal is to generate a list of companies that meet the following criteria:</span>
+        <br><br>
+        <span class="highlight-context">
+          1. Similarity: Should be similar in business model, product/service offering, and target market to [Insert Name of Your Successful Reference Company Here Again, or describe its key characteristics if the AI might not know the company].<br><br>
+          2. Location: Must be based in the United Kingdom (UK).<br><br>
+          3. Industry: [While the reference company implies the industry, you can still specify or broaden it slightly if needed.]<br><br>
+          4. Company Size/Revenue: Should include businesses with an annual revenue up to £15 million. If possible, prioritize companies within the £1–£15 million annual revenue range.
+        </span>
       </div>
     </div>
 
-    <div class="prompt-section">
+    <div class="section-block">
       <div class="section-label">Refining Search</div>
       <div class="section-content">
-        Required Information: For each company identified, please provide:
-        <ul>
+        <span class="highlight-context">Required Information: For each company identified, please provide:</span>
+        <ul class="highlight-context">
           <li>Company Name</li>
           <li>A direct link to their official website</li>
           <li>A direct link to their UK Companies House profile page</li>
-          <li>Key Contact Person/Role</li>
-          <li>Public Business Contact Information</li>
+          <li>Key Contact Person/Role (if publicly available)</li>
+          <li>Public Business Contact Info (if publicly listed)</li>
         </ul>
       </div>
     </div>
 
-    <div class="prompt-section">
+    <div class="section-block">
       <div class="section-label">Defining Deliverables</div>
       <div class="section-content">
-        Please present this information in a table format with clear column headers:  
-        'Company Name', 'Website Link', 'Companies House Link', 'Key Contact/Role', and 'Public Business Contact Info'.
+        <span class="highlight-format">Please present this information in a table format with clear column headers:<br> 'Company Name', 'Website Link', 'Companies House Link', 'Key Contact/Role', and 'Public Business Contact Info'.</span>
       </div>
     </div>
 
-    <div class="prompt-section">
+    <div class="section-block">
       <div class="section-label">Prompt Guardrails</div>
       <div class="section-content">
-        Exclude any companies that are already widely known multinational corporations or publicly listed companies, unless they have a distinct UK-based subsidiary that independently meets the criteria.
-
-        Ensure the information is as up-to-date as possible.
-
-        Do not provide private, non-publicly listed personal emails or direct phone numbers unless clearly marked as public business contacts.
-
-        Prioritize information that companies have made publicly available for business inquiries.
+        <span class="highlight-format">Exclude any companies that are already widely known multinational corporations or publicly listed companies, unless they have a distinct UK-based subsidiary that independently meets the revenue criteria and similarity profile.</span><br><br>
+        <span class="highlight-format">Ensure the information is as up-to-date as possible.</span><br><br>
+        <span class="highlight-format">Do not provide private, non-publicly listed personal email addresses or direct phone numbers for individuals unless they are explicitly listed as public business contacts.</span><br><br>
+        <span class="highlight-format">Prioritize information that companies have made publicly available for business inquiries.</span>
       </div>
     </div>
+
   </div>
+
+  <script>
+    const switchEl = document.getElementById('toggleHighlightSwitch');
+    switchEl.addEventListener('change', () => {
+      if (switchEl.checked) {
+        document.body.classList.remove('no-highlight');
+      } else {
+        document.body.classList.add('no-highlight');
+      }
+    });
+  </script>
 
 </body>
 </html>
