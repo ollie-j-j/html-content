@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Prompt with Highlighted Labels</title>
+  <style>
+    body {
+      font-family: system-ui, sans-serif;
+      background-color: #ffffff;
+      margin: 0;
+      padding: 2rem;
+    }
+    .card {
+      max-width: 800px;
+      margin: 0 auto;
+      background: #fafafa;
+      border: 1px solid #e5e7eb;
+      border-radius: 8px;
+      padding: 1.5rem;
+      line-height: 1.6;
+      color: #1f2937;
+    }
+    .prompt-text span.label {
+      font-weight: 600;
+      padding: 0.1rem 0.3rem;
+      border-radius: 4px;
+      color: #1f2937;
+    }
+    .label-email       { background-color: #E3ECFB; } /* soft blue */
+    .label-recipient   { background-color: #FDE7E7; } /* soft rose */
+    .label-objective   { background-color: #FFF7D6; } /* soft yellow */
+    .label-keyinfo     { background-color: #E6F4EA; } /* soft green */
+    .label-tone        { background-color: #F3E8FD; } /* soft lavender */
+    .label-cta         { background-color: #FCEFEA; } /* soft peach */
+  </style>
+</head>
+<body>
+  <div class="card">
+    <div class="prompt-text">
+      Create a [<span class="label label-email">Email Type</span>: short and engaging introductory email].<br><br>
+      The [<span class="label label-recipient">Audience</span>: is founders of UK-based artisan food & beverage e-commerce SMBs (like craft breweries or gourmet condiment makers) who are expanding direct-to-consumer sales to the EU post-Brexit].<br><br>
+      My [<span class="label label-objective">Objective</span>: is to make them aware of Revolut Business as a potential solution for their cross-border financial needs and to invite them to a relevant upcoming webinar on navigating EU payments].<br><br>
+      [<span class="label label-keyinfo">Key Information/Message</span>: Briefly touch upon common challenges they might face, such as managing frequent EUR sales, varied EU VAT, and international shipping costs, and position Revolut Business as a way to simplify these financial complexities.]<br><br>
+      The desired [<span class="label label-tone">Tone</span>: is supportive, insightful, and helpful, not overly salesy].<br><br>
+      The [<span class="label label-cta">Call to Action</span>: should be an invitation to register for our free webinar titled 'Simplify Your EU Sales: Finance Tips for Food & Beverage E-commerce']. Sign off as [Your Name</bold>] from the Revolut Business Team.
+    </div>
+  </div>
+</body>
+</html>
