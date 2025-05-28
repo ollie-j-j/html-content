@@ -8,13 +8,8 @@
       font-family: system-ui, sans-serif;
       background-color: #ffffff;
       margin: 0;
-      /* reduced bottom padding to 1rem for LMS embed */
       padding: 2rem; /* equal padding on all sides */
-      margin-bottom: 0;
-    }
-
-    .section-block:last-child {
-      margin-bottom: 0;
+      /* The margin-bottom: 0; was already here, which is good. */
     }
 
     .card {
@@ -46,16 +41,16 @@
       border-radius: 6px;
     }
 
-    .persona  { background-color: #e3ecfb; color: #1c2e4a; }
-    .task     { background-color: #fde7e7; color: #5c1a1a; }
-    .context  { background-color: #fff7d6; color: #5a4e00; }
-    .format   { background-color: #e6f4ea; color: #184d33; }
+    .persona { background-color: #e3ecfb; color: #1c2e4a; }
+    .task { background-color: #fde7e7; color: #5c1a1a; }
+    .context { background-color: #fff7d6; color: #5a4e00; }
+    .format { background-color: #e6f4ea; color: #184d33; }
 
     /* Highlight classes */
-    .highlight-persona  { background-color: #e3ecfb; }
-    .highlight-task     { background-color: #fde7e7; }
-    .highlight-context  { background-color: #fff7d6; }
-    .highlight-format   { background-color: #e6f4ea; }
+    .highlight-persona { background-color: #e3ecfb; }
+    .highlight-task { background-color: #fde7e7; }
+    .highlight-context { background-color: #fff7d6; }
+    .highlight-format { background-color: #e6f4ea; }
 
     /* No-highlight override */
     .no-highlight .highlight-persona,
@@ -71,6 +66,11 @@
       align-items: flex-start;
       gap: 1.5rem;
       margin-bottom: 2rem;
+    }
+
+    /* FIX: Remove margin-bottom from the last section-block */
+    .section-block:last-child {
+        margin-bottom: 0;
     }
 
     .section-label {
@@ -154,7 +154,6 @@
         <span class="tag task">Task</span>
         <span class="tag context">Context</span>
         <span class="tag format">Format</span>
-        <!-- Toggle Switch -->
         <label class="switch">
           <input type="checkbox" id="toggleHighlightSwitch">
           <span class="slider"></span>
