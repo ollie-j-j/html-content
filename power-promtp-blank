@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Similar Company Prospecting Prompt</title>
+  <style>
+    body {
+      font-family: system-ui, sans-serif;
+      background-color: transparent;
+      margin: 0;
+      padding: 0;
+    }
+
+    .card {
+      background: white;
+      border-radius: 16px;
+      box-shadow: 0 2px 10px rgba(0, 0, 0, 0.08);
+      padding: 1.5rem;
+      max-width: 800px;
+      margin: 0 auto;
+    }
+
+    .legend {
+      display: flex;
+      gap: 0.75rem;
+      margin-bottom: 1rem;
+      font-size: 0.9rem;
+    }
+
+    .tag {
+      border-radius: 6px;
+      padding: 0.25rem 0.5rem;
+      font-weight: 600;
+    }
+
+    .task    { background-color: #fde7e7; color: #5c1a1a; }
+    .context { background-color: #fff7d6; color: #5a4e00; }
+    .format  { background-color: #e6f4ea; color: #184d33; }
+
+    .instruction {
+      background-color: #f8f9fa;
+      border: 1px solid #dfe1e5;
+      border-radius: 12px;
+      padding: 1rem;
+      font-size: 1rem;
+      line-height: 1.6;
+      white-space: pre-wrap;
+    }
+  </style>
+</head>
+<body>
+
+  <div class="card">
+    <div class="legend">
+      <span class="tag task">Task</span>
+      <span class="tag context">Context</span>
+      <span class="tag format">Format</span>
+    </div>
+
+    <div class="instruction">
+I am an Account Executive at Revolut, a financial technology company. I am conducting prospecting research to identify potential new business clients.
+
+I have had significant success with a company called [Insert Name of Your Successful Reference Company Here] and I am looking for other companies that are similar to them.
+
+My goal is to generate a list of companies that meet the following criteria:
+
+Similarity: Should be similar in business model, product/service offering, and target market to [Insert Name of Your Successful Reference Company Here Again, or describe its key characteristics if the AI might not know the company, e.g., 'a UK-based wholesaler of imported fresh fruits and vegetables with a strong online presence for B2B sales'].
+
+Location: Must be based in the United Kingdom (UK).
+
+Industry: [While the reference company implies the industry, you can still specify or broaden it slightly if needed. E.g., "food and beverage wholesale," "e-commerce businesses specializing in fresh produce," or "importers of exotic fruits." If the reference company is very niche, you might state "companies in the same or closely related niche as the reference company."]
+
+Company Size/Revenue: Should include businesses with an annual revenue up to £15 million.
+
+Required Information: For each company identified, please provide:
+- Company Name
+- A direct link to their official website
+- A direct link to their UK Companies House profile page
+- Key Contact Person/Role: If publicly available, identify a relevant key contact person (e.g., CEO, Founder, Head of Sales, Procurement Manager) and their role.
+- Public Business Contact Information: If publicly listed on the company's website or in public business directories, provide a general business phone number or a publicly listed business email address for inquiries (e.g., info@company.com or sales@company.com).
+
+Please present this information in a table format with clear column headers: 'Company Name', 'Website Link', 'Companies House Link', 'Key Contact/Role', and 'Public Business Contact Info'.
+
+Exclude any companies that are already widely known multinational corporations or publicly listed companies, unless they have a distinct UK-based subsidiary that independently meets the revenue criteria and similarity profile. Focus on small to medium-sized businesses (SMBs) that mirror the characteristics of my reference company.
+
+Ensure the information is as up-to-date as possible.
+
+Do not provide private, non-publicly listed personal email addresses or direct phone numbers for individuals unless they are explicitly listed as public business contacts.
+
+Prioritize information that companies have made publicly available for business inquiries.
+    </div>
+  </div>
+
+</body>
+</html>
